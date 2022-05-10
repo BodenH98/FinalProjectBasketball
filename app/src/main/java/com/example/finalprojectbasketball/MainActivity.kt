@@ -19,13 +19,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var mysteryPlayer: Player
         val basketballApi = RetrofitHelper.getInstance().create(PlayerService::class.java)
-        val basketballCall = basketballApi.getPlayers(gameRules.random.toString())
+        val basketballCall = basketballApi.getPlayers(gameRules.random)
         basketballCall.enqueue(object: Callback<List<Player>>{
             override fun onResponse(
                 call: Call<List<Player>>,
                 response: Response<List<Player>>) {
                 response.body()
                 Log.d(TAG,"onResponse ${response.body()}")
+
             }
 
             override fun onFailure(call: Call<List<Player>>, t: Throwable) {

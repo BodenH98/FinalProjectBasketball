@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object RetrofitHelper {
-    val baseurl = "https://www.balldontlie.io/api/"
+    val baseurl = "https://www.balldontlie.io/api/v1"
     fun getInstance(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseurl)
