@@ -6,5 +6,5 @@ import retrofit2.http.Query
 
 interface PlayerService {
     @GET("players")
-    fun getPlayers(@Query("search")search:String): Call<List<Player>>
+    fun getPlayers(@Query("ID")search:String): Call<List<Player>>
 }
