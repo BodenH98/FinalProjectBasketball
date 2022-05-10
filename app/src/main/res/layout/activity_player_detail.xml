@@ -17,7 +17,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toStartOf="@+id/textView_guessedDivision"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView_guessedTeam"
+        app:layout_constraintStart_toEndOf="@+id/textView_guessedLastname"
         app:layout_constraintTop_toBottomOf="@+id/textView_playerConference" />
 
     <TextView
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_playerDivision" />
 
     <TextView
-        android:id="@+id/textView_guessedTeam"
+        android:id="@+id/textView_guessedLastname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -43,69 +43,25 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toStartOf="@+id/textView_guessedConference"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView_guessedPlayer"
-        app:layout_constraintTop_toBottomOf="@+id/textView_playerTeam" />
+        app:layout_constraintStart_toEndOf="@+id/textView_guessedFirstname"
+        app:layout_constraintTop_toBottomOf="@+id/textView_lastName" />
 
     <TextView
         android:id="@+id/textView_playerPosition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="376dp"
+        android:layout_marginTop="244dp"
         android:text="Position"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView_playerAge"
+        app:layout_constraintEnd_toStartOf="@+id/textView_playerHeightFt"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_playerConference"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
-        android:text="Conference"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView_playerDivision"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView_playerTeam"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_playerTeam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
-        android:text="Team"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toStartOf="@+id/textView_playerConference"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView_playername"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_playername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
-        android:text="Player"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toStartOf="@+id/textView_playerTeam"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_guessedFirstname" />
 
     <TextView
         android:id="@+id/textView_playerDivision"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
         android:text="Division"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,30 +70,64 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView_guessedPlayer"
+        android:id="@+id/textView_playerConference"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:text="Conference"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_playerDivision"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView_lastName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_firstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Firstname"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toStartOf="@+id/textView_lastName"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_lastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lastname"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toStartOf="@+id/textView_playerConference"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView_firstName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_guessedFirstname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toStartOf="@+id/textView_guessedLastname"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_firstName" />
+
+    <TextView
+        android:id="@+id/textView_guessedHeightIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toStartOf="@+id/textView_guessedTeam"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_playername" />
-
-    <TextView
-        android:id="@+id/textView_guessedHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toStartOf="@+id/textView_guessedNumber"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView_guessedAge"
-        app:layout_constraintTop_toBottomOf="@+id/textView_playerHeight" />
+        app:layout_constraintStart_toEndOf="@+id/textView_guessedHeightFt"
+        app:layout_constraintTop_toBottomOf="@+id/textView_playerHeightIn" />
 
     <TextView
         android:id="@+id/textView_guessedPosition"
@@ -146,50 +136,50 @@
         android:layout_marginTop="84dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toStartOf="@+id/textView_guessedAge"
+        app:layout_constraintEnd_toStartOf="@+id/textView_guessedHeightFt"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_playerPosition" />
 
     <TextView
-        android:id="@+id/textView_playerNumber"
+        android:id="@+id/textView_playerTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="376dp"
-        android:text="Number"
+        android:layout_marginTop="244dp"
+        android:text="Team"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView_playerHeight" />
+        app:layout_constraintStart_toEndOf="@+id/textView_playerHeightIn"
+        app:layout_constraintTop_toBottomOf="@+id/textView_guessedDivision" />
 
     <TextView
-        android:id="@+id/textView_playerAge"
+        android:id="@+id/textView_playerHeightFt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="376dp"
-        android:text="Age"
+        android:layout_marginTop="244dp"
+        android:text="Height(ft)"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView_playerHeight"
+        app:layout_constraintEnd_toStartOf="@+id/textView_playerHeightIn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView_playerPosition" />
+        app:layout_constraintStart_toEndOf="@+id/textView_playerPosition"
+        app:layout_constraintTop_toBottomOf="@+id/textView_guessedLastname" />
 
     <TextView
-        android:id="@+id/textView_playerHeight"
+        android:id="@+id/textView_playerHeightIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="376dp"
-        android:text="Height"
+        android:layout_marginTop="244dp"
+        android:text="Height(in)"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView_playerNumber"
+        app:layout_constraintEnd_toStartOf="@+id/textView_playerTeam"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView_playerAge" />
+        app:layout_constraintStart_toEndOf="@+id/textView_playerHeightFt"
+        app:layout_constraintTop_toBottomOf="@+id/textView_guessedConference" />
 
     <TextView
-        android:id="@+id/textView_guessedNumber"
+        android:id="@+id/textView_guessedTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
@@ -197,18 +187,18 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView_guessedHeight"
-        app:layout_constraintTop_toBottomOf="@+id/textView_playerNumber" />
+        app:layout_constraintStart_toEndOf="@+id/textView_guessedHeightIn"
+        app:layout_constraintTop_toBottomOf="@+id/textView_playerTeam" />
 
     <TextView
-        android:id="@+id/textView_guessedAge"
+        android:id="@+id/textView_guessedHeightFt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toStartOf="@+id/textView_guessedHeight"
+        app:layout_constraintEnd_toStartOf="@+id/textView_guessedHeightIn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView_guessedPosition"
-        app:layout_constraintTop_toBottomOf="@+id/textView_playerAge" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_playerHeightFt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

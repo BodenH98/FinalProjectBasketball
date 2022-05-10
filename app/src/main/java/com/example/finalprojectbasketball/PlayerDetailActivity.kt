@@ -16,6 +16,13 @@ class PlayerDetailActivity : AppCompatActivity(){
         setContentView(binding.root)
 
         val player = intent.getParcelableExtra<Player>(EXTRA_PLAYER)
-        binding.textViewGuessedAge.text = player?.
+        binding.textViewGuessedConference.text = player?.conference
+        binding.textViewGuessedDivision.text = player?.divison
+        binding.textViewGuessedHeightFt.text = player?.height_feet.toString()
+        binding.textViewGuessedHeightIn.text = player?.height_inches.toString()
+        binding.textViewGuessedFirstname.text = player?.first_name
+        binding.textViewGuessedLastname.text = player?.last_name
+        binding.textViewGuessedPosition.text = player?.position
+        binding.textViewGuessedTeam.text = player?.teamName
     }
 }
