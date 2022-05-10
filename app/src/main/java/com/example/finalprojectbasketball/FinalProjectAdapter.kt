@@ -10,6 +10,19 @@ import android.widget.TextView
 
 class FinalProjectAdapter (var dataSet : List<Player>):
     RecyclerView.Adapter<FinalProjectAdapter.ViewHolder>() {
-        class ViewHolder {
+
+
+        class ViewHolder(view:View) : RecyclerView.ViewHolder(view) {
+
         }
-        }
+
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+
+    }
+
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getItemCount() = dataSet.size
+}
