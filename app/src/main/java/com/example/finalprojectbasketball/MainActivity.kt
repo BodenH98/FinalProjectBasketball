@@ -13,15 +13,16 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var gameRules: GameRules
     private lateinit var adapter: FinalProjectAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var mysteryPlayer: Player
+        fun Random():Int{
+            return ((Math.random()*3092)+1).toInt()
+        }
         val basketballApi = RetrofitHelper.getInstance().create(PlayerService::class.java)
-        val basketballCall = basketballApi.getPlayers(gameRules.random)
+        val basketballCall = basketballApi.getPlayers(Random())
         basketballCall.enqueue(object: Callback<List<Player>>{
             override fun onResponse(
                 call: Call<List<Player>>,
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
                 binding.basketballRecyclerView.adapter = adapter
                 binding.basketballRecyclerView.layoutManager =
                     LinearLayoutManager(this@MainActivity)
+
             }
 
             override fun onFailure(call: Call<List<Player>>, t: Throwable) {
