@@ -15,11 +15,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: FinalProjectAdapter
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        lateinit var viewHolder: FinalProjectAdapter.ViewHolder
         fun Random():Int{
             return ((Math.random()*3092)+1).toInt()
+        }
+
+        binding.buttonMainActivityGuess.setOnClickListener {
+            viewHolder.textViewPlayerGuessed.text.equals(binding.editTextGuessPlayer.text)
         }
         val basketballApi = RetrofitHelper.getInstance().create(PlayerService::class.java)
         val basketballCall = basketballApi.getPlayers(Random())

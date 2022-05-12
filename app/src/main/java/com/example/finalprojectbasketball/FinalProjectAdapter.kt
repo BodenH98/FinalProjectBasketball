@@ -15,7 +15,7 @@ class FinalProjectAdapter (var dataSet : List<Player>):
 
         class ViewHolder(view:View) : RecyclerView.ViewHolder(view) {
             val layout:ConstraintLayout
-            val textViewPlayerGuessed:TextView
+            var textViewPlayerGuessed:TextView
             init {
                 layout = view.findViewById(R.id.Layout_playeritem)
                 textViewPlayerGuessed = view.findViewById(R.id.item_textview_playerGuessed)
