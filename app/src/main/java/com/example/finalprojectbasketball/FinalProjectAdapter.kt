@@ -15,10 +15,10 @@ class FinalProjectAdapter (var dataSet : List<Player>):
 
         class ViewHolder(view:View) : RecyclerView.ViewHolder(view) {
             val layout:ConstraintLayout
-            val textViewPlayername:TextView
+            val textViewPlayerGuessed:TextView
             init {
                 layout = view.findViewById(R.id.Layout_playeritem)
-                textViewPlayername= view.findViewById(R.id.item_textview_playername)
+                textViewPlayerGuessed = view.findViewById(R.id.item_textview_playerGuessed)
             }
         }
 
@@ -30,10 +30,9 @@ class FinalProjectAdapter (var dataSet : List<Player>):
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val playerInfo = dataSet[position]
-        viewHolder.textViewPlayername.text = "${playerInfo.first_name} ${playerInfo.last_name} ${playerInfo.teamName} ${playerInfo.position}"
+        viewHolder.textViewPlayerGuessed.text = "${playerInfo.first_name} ${playerInfo.last_name} ${playerInfo.teamName} ${playerInfo.position}"
         viewHolder.layout.setOnClickListener {
             val context = viewHolder.layout.context
-
             val playerDetailIntent = Intent(context,PlayerDetailActivity::class.java).apply {
                 putExtra(PlayerDetailActivity.EXTRA_PLAYER,playerInfo)
             }
