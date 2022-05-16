@@ -1,5 +1,6 @@
 package com.example.finalprojectbasketball
 
-class PlayerSearchWrapper {
-
-}
+data class PlayerSearchWrapper(
+      var data: List<Player>,
+      var meta:Meta
+)

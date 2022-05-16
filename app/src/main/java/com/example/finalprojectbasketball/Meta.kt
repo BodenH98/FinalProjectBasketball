@@ -1,5 +1,5 @@
 package com.example.finalprojectbasketball
 
-object Meta {
+data class Meta (
    var totalCount:Int = 0
-}
+)
