@@ -1,5 +1,5 @@
 package com.example.finalprojectbasketball
 
-class PlayerSearchWrapper {
-
+object Meta {
+   var totalCount:Int = 0
 }
