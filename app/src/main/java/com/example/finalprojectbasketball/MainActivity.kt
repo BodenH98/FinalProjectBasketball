@@ -14,38 +14,69 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: FinalProjectAdapter
+    private lateinit var viewHolder: FinalProjectAdapter.ViewHolder
+    private lateinit var targetPlayer : Player
+    private lateinit var playerguess:Player
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        lateinit var viewHolder: FinalProjectAdapter.ViewHolder
+        setContentView(binding.root)
+
+
         fun Random():Int{
             return ((Math.random()*3092)+1).toInt()
         }
 
-        binding.buttonMainActivityGuess.setOnClickListener {
-            viewHolder.textViewPlayerGuessed.text.equals(binding.editTextGuessPlayer.text)
-        }
+
         val basketballApi = RetrofitHelper.getInstance().create(PlayerService::class.java)
-        val basketballCall = basketballApi.getPlayers(Random())
-        basketballCall.enqueue(object: Callback<List<Player>>{
+        val basketballCall = basketballApi.getPlayerbyId(Random())
+
+        basketballCall.enqueue(object: Callback<Player>{
             override fun onResponse(
-                call: Call<List<Player>>,
-                response: Response<List<Player>>)
+                call: Call<Player>,
+                response: Response<Player>)
             {
-                response.body()
+                targetPlayer = response.body()!!
                 Log.d(TAG,"onResponse ${response.body()}")
-                var playerList = response.body() ?: listOf<Player>()
+                var playerList = mutableListOf<Player>()
                     adapter = FinalProjectAdapter(playerList)
                 binding.basketballRecyclerView.adapter = adapter
                 binding.basketballRecyclerView.layoutManager =
                     LinearLayoutManager(this@MainActivity)
 
+                binding.buttonMainActivityGuess.setOnClickListener {
+                    val basketballCall2 = basketballApi.getPlayerbyname(binding.editTextGuessPlayer.text.toString())
+                    basketballCall2.enqueue(object : Callback<List<Player>> {
+                        override fun onResponse(
+                            call: Call<List<Player>>,
+                            response: Response<List<Player>>
+                        ) {
+                            playerguess = response.body()!![0]
+                            Log.d(TAG,"onResponse ${response.body()}")
+                            playerList.add(playerguess)
+                            adapter = FinalProjectAdapter(playerList)
+                            binding.basketballRecyclerView.adapter = adapter
+                            binding.basketballRecyclerView.layoutManager =
+                                LinearLayoutManager(this@MainActivity)
+                        }
+
+                        override fun onFailure(call: Call<List<Player>>, t: Throwable) {
+                            Log.d(TAG,"onFailureSearch ${t.message}")
+                        }
+
+                    })
+                    // find the player they typed in (using search by name)
+                    // make another call
+                    // add it to the list
+                    // update the adapter
+                    // check if this player matches the target player
+                }
+
             }
 
-            override fun onFailure(call: Call<List<Player>>, t: Throwable) {
+            override fun onFailure(call: Call<Player>, t: Throwable) {
                Log.d(TAG,"onFailure ${t.message}")
             }
         })
