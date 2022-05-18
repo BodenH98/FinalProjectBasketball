@@ -9,6 +9,6 @@ interface PlayerService {
     @GET("players/{ID}")
     fun getPlayerbyId(@Path("ID")id:Int): Call<Player>
     @GET("players")
-    fun getPlayerbyname(@Query("search")search:String):Call <List<Player>>
-    // Call<PlayerSearchWrapper>
+    fun getPlayerbyname(@Query("search")search:String):Call <PlayerSearchWrapper>
+
 }

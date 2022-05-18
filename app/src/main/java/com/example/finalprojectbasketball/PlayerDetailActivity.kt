@@ -23,6 +23,6 @@ class PlayerDetailActivity : AppCompatActivity(){
         binding.textViewGuessedFirstname.text = player?.first_name
         binding.textViewGuessedLastname.text = player?.last_name
         binding.textViewGuessedPosition.text = player?.position
-        binding.textViewGuessedTeam.text = player?.teamName
+        binding.textViewGuessedTeam.text = player?.teamname
     }
 }

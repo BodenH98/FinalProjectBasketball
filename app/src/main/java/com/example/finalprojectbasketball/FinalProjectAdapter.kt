@@ -32,7 +32,7 @@ class FinalProjectAdapter (var dataSet : List<Player>):
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val playerInfo = dataSet[position]
-        viewHolder.textViewPlayerGuessed.text = "${playerInfo.first_name} ${playerInfo.last_name} ${playerInfo.teamName} ${playerInfo.position}"
+        viewHolder.textViewPlayerGuessed.text = "${playerInfo.first_name} ${playerInfo.last_name} ${playerInfo.teamname} ${playerInfo.position}"
         viewHolder.layout.setOnClickListener {
             val context = viewHolder.layout.context
             val playerDetailIntent = Intent(context,PlayerDetailActivity::class.java).apply {
