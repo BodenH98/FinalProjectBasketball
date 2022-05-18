@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var targetPlayer : Player
     private lateinit var playerguess:Player
 
-
+    //TODO: Make the format of the player detail activity two columns instead of two rows.
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
