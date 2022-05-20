@@ -72,8 +72,6 @@ class MainActivity : AppCompatActivity() {
                             }
                             else {
                                 playerguess = response.body()!!.data[0]
-
-
                                 playerList.add(playerguess)
                                 adapter = FinalProjectAdapter(playerList)
                                 binding.basketballRecyclerView.adapter = adapter
