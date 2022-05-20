@@ -1,6 +1,8 @@
 package com.example.finalprojectbasketball
 
 import android.content.ContentValues.TAG
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewHolder: FinalProjectAdapter.ViewHolder
     private lateinit var targetPlayer : Player
     private lateinit var playerguess:Player
+    private lateinit var playerDetailActivity: PlayerDetailActivity
+
 
     //TODO: Make the format of the player detail activity two columns instead of two rows.
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,15 +60,68 @@ class MainActivity : AppCompatActivity() {
                             response: Response<PlayerSearchWrapper>
                         ) {
                             playerguess = response.body()!!.data[0]
-                            Log.d(TAG,"onResponse ${response.body()}")
-                            playerList.add(playerguess)
-                            adapter = FinalProjectAdapter(playerList)
-                            binding.basketballRecyclerView.adapter = adapter
-                            binding.basketballRecyclerView.layoutManager =
-                                LinearLayoutManager(this@MainActivity)
-                            if(playerguess.equals(targetPlayer)){
-                                Toast.makeText(this@MainActivity,"you win!",LENGTH_LONG).show()
+                            var meta = response.body()!!.meta
+                            Log.d(TAG, "onResponse ${response.body()}")
+                            if(meta.total_count== 0){
+                                Toast.makeText(this@MainActivity,"Invalid player", LENGTH_LONG).show()
                             }
+                            else if(meta.total_count>1){
+                                Toast.makeText(this@MainActivity,"Too many players with that name!",
+                                    LENGTH_LONG).show()
+                            }
+                            else {
+
+                                playerList.add(playerguess)
+                                adapter = FinalProjectAdapter(playerList)
+                                binding.basketballRecyclerView.adapter = adapter
+                                binding.basketballRecyclerView.layoutManager =
+                                    LinearLayoutManager(this@MainActivity)
+                                if (playerguess.equals(targetPlayer)) {
+                                    Toast.makeText(this@MainActivity, "you win!", LENGTH_LONG)
+                                        .show()
+                                }
+                                if(playerguess.first_name.equals(targetPlayer.first_name)){
+                                    playerDetailActivity.binding.textViewGuessedFirstname.setTextColor(
+                                        Color.GREEN
+                                    )
+                                }
+                                if(playerguess.last_name.equals(targetPlayer.last_name)){
+                                    playerDetailActivity.binding.textViewGuessedLastname.setTextColor(
+                                        Color.GREEN
+                                    )
+                                }
+                                if(playerguess.team.name.equals(targetPlayer.team.name)){
+                                    playerDetailActivity.binding.textViewGuessedTeam.setTextColor(
+                                        Color.GREEN
+                                    )
+                                }
+                                if(playerguess.team.division.equals(targetPlayer.team.division)){
+                                    playerDetailActivity.binding.textViewGuessedDivision.setTextColor(
+                                        Color.GREEN
+                                    )
+                                }
+                                if(playerguess.team.conference.equals(targetPlayer.team.conference)){
+                                    playerDetailActivity.binding.textViewGuessedConference.setTextColor(
+                                        Color.GREEN
+                                    )
+                                }
+                                if(playerguess.position.equals(targetPlayer.position)){
+                                    playerDetailActivity.binding.textViewGuessedPosition.setTextColor(
+                                        Color.GREEN
+                                    )
+                                }
+                                if(playerguess.height_feet.equals(targetPlayer.height_feet)){
+                                    playerDetailActivity.binding.textViewGuessedHeightFt.setTextColor(
+                                        Color.GREEN
+                                    )
+                                }
+                                if(playerguess.height_inches.equals(targetPlayer.height_inches)){
+                                    playerDetailActivity.binding.textViewGuessedHeightIn.setTextColor(
+                                        Color.GREEN
+                                    )
+                                }
+                            }
+
                         }
 
                         override fun onFailure(call: Call<PlayerSearchWrapper>, t: Throwable) {

@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.finalprojectbasketball.databinding.ActivityPlayerDetailBinding
 
 class PlayerDetailActivity : AppCompatActivity(){
-    private  lateinit var  binding: ActivityPlayerDetailBinding
+    lateinit var  binding: ActivityPlayerDetailBinding
+    private lateinit var playerguess:Player
     companion object{
         val EXTRA_PLAYER = "player"
-        val EXTRA_TEAM = "team"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +17,7 @@ class PlayerDetailActivity : AppCompatActivity(){
         setContentView(binding.root)
 
         val player = intent.getParcelableExtra<Player>(EXTRA_PLAYER)
-        val team = intent.getParcelableExtra<Team>(EXTRA_TEAM)
+        var team = player?.team
         binding.textViewGuessedConference.text = team?.conference
         binding.textViewGuessedDivision.text = team?.division
         binding.textViewGuessedHeightFt.text = player?.height_feet.toString()
@@ -26,5 +26,6 @@ class PlayerDetailActivity : AppCompatActivity(){
         binding.textViewGuessedLastname.text = player?.last_name
         binding.textViewGuessedPosition.text = player?.position
         binding.textViewGuessedTeam.text = team?.name
+
     }
 }
