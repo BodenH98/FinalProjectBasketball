@@ -10,6 +10,7 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalprojectbasketball.databinding.ActivityMainBinding
+import com.example.finalprojectbasketball.databinding.ActivityPlayerDetailBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewHolder: FinalProjectAdapter.ViewHolder
     private lateinit var targetPlayer : Player
     private lateinit var playerguess:Player
-    private lateinit var playerDetailActivity: PlayerDetailActivity
+
 
 
     //TODO: Make the format of the player detail activity two columns instead of two rows.
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 targetPlayer = response.body()!!
                 Log.d(TAG,"onResponse ${response.body()}")
                 var playerList = mutableListOf<Player>()
-                    adapter = FinalProjectAdapter(playerList)
+                    adapter = FinalProjectAdapter(playerList, targetPlayer)
                 binding.basketballRecyclerView.adapter = adapter
                 binding.basketballRecyclerView.layoutManager =
                     LinearLayoutManager(this@MainActivity)
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                             call: Call<PlayerSearchWrapper>,
                             response: Response<PlayerSearchWrapper>
                         ) {
-                            playerguess = response.body()!!.data[0]
+
                             var meta = response.body()!!.meta
                             Log.d(TAG, "onResponse ${response.body()}")
                             if(meta.total_count== 0){
@@ -70,56 +71,20 @@ class MainActivity : AppCompatActivity() {
                                     LENGTH_LONG).show()
                             }
                             else {
+                                playerguess = response.body()!!.data[0]
+
 
                                 playerList.add(playerguess)
                                 adapter = FinalProjectAdapter(playerList)
                                 binding.basketballRecyclerView.adapter = adapter
                                 binding.basketballRecyclerView.layoutManager =
                                     LinearLayoutManager(this@MainActivity)
+                                lateinit var playerDetailActivity:PlayerDetailActivity
                                 if (playerguess.equals(targetPlayer)) {
                                     Toast.makeText(this@MainActivity, "you win!", LENGTH_LONG)
                                         .show()
                                 }
-                                if(playerguess.first_name.equals(targetPlayer.first_name)){
-                                    playerDetailActivity.binding.textViewGuessedFirstname.setTextColor(
-                                        Color.GREEN
-                                    )
-                                }
-                                if(playerguess.last_name.equals(targetPlayer.last_name)){
-                                    playerDetailActivity.binding.textViewGuessedLastname.setTextColor(
-                                        Color.GREEN
-                                    )
-                                }
-                                if(playerguess.team.name.equals(targetPlayer.team.name)){
-                                    playerDetailActivity.binding.textViewGuessedTeam.setTextColor(
-                                        Color.GREEN
-                                    )
-                                }
-                                if(playerguess.team.division.equals(targetPlayer.team.division)){
-                                    playerDetailActivity.binding.textViewGuessedDivision.setTextColor(
-                                        Color.GREEN
-                                    )
-                                }
-                                if(playerguess.team.conference.equals(targetPlayer.team.conference)){
-                                    playerDetailActivity.binding.textViewGuessedConference.setTextColor(
-                                        Color.GREEN
-                                    )
-                                }
-                                if(playerguess.position.equals(targetPlayer.position)){
-                                    playerDetailActivity.binding.textViewGuessedPosition.setTextColor(
-                                        Color.GREEN
-                                    )
-                                }
-                                if(playerguess.height_feet.equals(targetPlayer.height_feet)){
-                                    playerDetailActivity.binding.textViewGuessedHeightFt.setTextColor(
-                                        Color.GREEN
-                                    )
-                                }
-                                if(playerguess.height_inches.equals(targetPlayer.height_inches)){
-                                    playerDetailActivity.binding.textViewGuessedHeightIn.setTextColor(
-                                        Color.GREEN
-                                    )
-                                }
+
                             }
 
                         }

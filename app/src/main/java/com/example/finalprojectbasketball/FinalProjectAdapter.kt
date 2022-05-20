@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 
 
-class FinalProjectAdapter (var dataSet : List<Player>):
+class FinalProjectAdapter (var dataSet : List<Player>, var targetPlayer: Player):
     RecyclerView.Adapter<FinalProjectAdapter.ViewHolder>() {
 
 
@@ -37,6 +37,7 @@ class FinalProjectAdapter (var dataSet : List<Player>):
             val context = viewHolder.layout.context
             val playerDetailIntent = Intent(context,PlayerDetailActivity::class.java).apply {
                 putExtra(PlayerDetailActivity.EXTRA_PLAYER,playerInfo)
+                putExtra(PlayerDetailActivity.EXTRA_TARGET, targetPlayer)
             }
 
             context.startActivity(playerDetailIntent)
