@@ -10,10 +10,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 
 
 class FinalProjectAdapter (var dataSet : List<Player>, var targetPlayer: Player):
+
     RecyclerView.Adapter<FinalProjectAdapter.ViewHolder>() {
-
-
-
         class ViewHolder(view:View) : RecyclerView.ViewHolder(view) {
             val layout:ConstraintLayout
             val textViewPlayerGuessed:TextView
@@ -21,7 +19,6 @@ class FinalProjectAdapter (var dataSet : List<Player>, var targetPlayer: Player)
                 layout = view.findViewById(R.id.Layout_playeritem)
                 textViewPlayerGuessed = view.findViewById(R.id.item_textview_playerGuessed)
             }
-
         }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -32,6 +29,7 @@ class FinalProjectAdapter (var dataSet : List<Player>, var targetPlayer: Player)
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val playerInfo = dataSet[position]
+
         viewHolder.textViewPlayerGuessed.text = "${playerInfo.first_name} ${playerInfo.last_name}  Position: ${playerInfo.position}"
         viewHolder.layout.setOnClickListener {
             val context = viewHolder.layout.context

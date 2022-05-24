@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
@@ -77,7 +78,8 @@ class MainActivity : AppCompatActivity() {
                                 binding.basketballRecyclerView.adapter = adapter
                                 binding.basketballRecyclerView.layoutManager =
                                     LinearLayoutManager(this@MainActivity)
-                                if (playerguess.equals(targetPlayer)) {
+                                binding.editTextGuessPlayer.setText("")
+                                if (playerguess==(targetPlayer)) {
                                     Toast.makeText(this@MainActivity, "you win!", LENGTH_LONG)
                                         .show()
                                 }

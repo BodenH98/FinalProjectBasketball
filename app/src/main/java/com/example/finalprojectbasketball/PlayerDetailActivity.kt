@@ -8,6 +8,8 @@ import com.example.finalprojectbasketball.databinding.ActivityPlayerDetailBindin
 class PlayerDetailActivity : AppCompatActivity(){
     lateinit var  binding: ActivityPlayerDetailBinding
     private lateinit var playerguess:Player
+    private lateinit var adapter: FinalProjectAdapter
+//    private lateinit var playerList:List<Player>
     companion object{
         val EXTRA_PLAYER = "player"
         val EXTRA_TARGET = "targetplayer"
@@ -18,57 +20,62 @@ class PlayerDetailActivity : AppCompatActivity(){
         binding = ActivityPlayerDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val player = intent.getParcelableExtra<Player>(EXTRA_PLAYER)
-        var team = player?.team
-        binding.textViewGuessedConference.text = team?.conference
-        binding.textViewGuessedDivision.text = team?.division
-        binding.textViewGuessedHeightFt.text = player?.height_feet.toString()
-        binding.textViewGuessedHeightIn.text = player?.height_inches.toString()
-        binding.textViewGuessedFirstname.text = player?.first_name
-        binding.textViewGuessedLastname.text = player?.last_name
-        binding.textViewGuessedPosition.text = player?.position
-        binding.textViewGuessedTeam.text = team?.name
+        val guessedplayer = intent.getParcelableExtra<Player>(EXTRA_PLAYER)
+        var guessedteam = guessedplayer?.team
+        binding.textViewGuessedConference.text = guessedteam?.conference
+        binding.textViewGuessedDivision.text = guessedteam?.division
+        binding.textViewGuessedHeightFt.text = guessedplayer?.height_feet.toString()
+        binding.textViewGuessedHeightIn.text = guessedplayer?.height_inches.toString()
+        binding.textViewGuessedFirstname.text = guessedplayer?.first_name
+        binding.textViewGuessedLastname.text = guessedplayer?.last_name
+        binding.textViewGuessedPosition.text = guessedplayer?.position
+        binding.textViewGuessedTeam.text = guessedteam?.name
 
         val targetPlayer = intent.getParcelableExtra<Player>(EXTRA_TARGET)
-        if(playerguess.first_name.equals(targetPlayer?.first_name)){
+        if(guessedplayer?.first_name == targetPlayer?.first_name){
             binding.textViewGuessedFirstname.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.last_name.equals(targetPlayer?.last_name)){
+        if(guessedplayer?.last_name == targetPlayer?.last_name){
             binding.textViewGuessedLastname.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.team.name.equals(targetPlayer?.team?.name)){
+        if(guessedplayer?.team?.name == targetPlayer?.team?.name){
             binding.textViewGuessedTeam.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.team.division.equals(targetPlayer?.team?.division)){
+        if(guessedplayer?.team?.division == targetPlayer?.team?.division){
             binding.textViewGuessedDivision.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.team.conference.equals(targetPlayer?.team?.conference)){
+        if(guessedplayer?.team?.conference == targetPlayer?.team?.conference){
             binding.textViewGuessedConference.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.position.equals(targetPlayer?.position)){
+        if(guessedplayer?.position == targetPlayer?.position){
             binding.textViewGuessedPosition.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.height_feet.equals(targetPlayer?.height_feet)){
+        if(guessedplayer?.height_feet == (targetPlayer?.height_feet)){
             binding.textViewGuessedHeightFt.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.height_inches.equals(targetPlayer?.height_inches)){
+        if(guessedplayer?.height_inches == targetPlayer?.height_inches){
             binding.textViewGuessedHeightIn.setTextColor(
                 Color.GREEN
             )
         }
+        else if(guessedplayer?.height_inches (targetPlayer?.height_inches) <2 || 2>  ){
+                binding.textViewGuessedHeightIn.setTextColor(
+                    Color.YELLOW
+                )
+            }
     }
 }
