@@ -73,11 +73,10 @@ class MainActivity : AppCompatActivity() {
                             else {
                                 playerguess = response.body()!!.data[0]
                                 playerList.add(playerguess)
-                                adapter = FinalProjectAdapter(playerList)
+                                adapter = FinalProjectAdapter(playerList,targetPlayer)
                                 binding.basketballRecyclerView.adapter = adapter
                                 binding.basketballRecyclerView.layoutManager =
                                     LinearLayoutManager(this@MainActivity)
-                                lateinit var playerDetailActivity:PlayerDetailActivity
                                 if (playerguess.equals(targetPlayer)) {
                                     Toast.makeText(this@MainActivity, "you win!", LENGTH_LONG)
                                         .show()

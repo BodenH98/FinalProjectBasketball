@@ -35,38 +35,38 @@ class PlayerDetailActivity : AppCompatActivity(){
                 Color.GREEN
             )
         }
-        if(playerguess.last_name.equals(targetPlayer.last_name)){
-            playerDetailActivity.binding.textViewGuessedLastname.setTextColor(
+        if(playerguess.last_name.equals(targetPlayer?.last_name)){
+            binding.textViewGuessedLastname.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.team.name.equals(targetPlayer.team.name)){
-            playerDetailActivity.binding.textViewGuessedTeam.setTextColor(
+        if(playerguess.team.name.equals(targetPlayer?.team?.name)){
+            binding.textViewGuessedTeam.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.team.division.equals(targetPlayer.team.division)){
-            playerDetailActivity.binding.textViewGuessedDivision.setTextColor(
+        if(playerguess.team.division.equals(targetPlayer?.team?.division)){
+            binding.textViewGuessedDivision.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.team.conference.equals(targetPlayer.team.conference)){
+        if(playerguess.team.conference.equals(targetPlayer?.team?.conference)){
             binding.textViewGuessedConference.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.position.equals(targetPlayer.position)){
+        if(playerguess.position.equals(targetPlayer?.position)){
             binding.textViewGuessedPosition.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.height_feet.equals(targetPlayer.height_feet)){
-            playerDetailActivity.binding.textViewGuessedHeightFt.setTextColor(
+        if(playerguess.height_feet.equals(targetPlayer?.height_feet)){
+            binding.textViewGuessedHeightFt.setTextColor(
                 Color.GREEN
             )
         }
-        if(playerguess.height_inches.equals(targetPlayer.height_inches)){
-            playerDetailActivity.binding.textViewGuessedHeightIn.setTextColor(
+        if(playerguess.height_inches.equals(targetPlayer?.height_inches)){
+            binding.textViewGuessedHeightIn.setTextColor(
                 Color.GREEN
             )
         }
