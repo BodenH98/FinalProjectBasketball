@@ -9,7 +9,7 @@ class PlayerDetailActivity : AppCompatActivity(){
     lateinit var  binding: ActivityPlayerDetailBinding
     private lateinit var playerguess:Player
     private lateinit var adapter: FinalProjectAdapter
-//    private lateinit var playerList:List<Player>
+
     companion object{
         val EXTRA_PLAYER = "player"
         val EXTRA_TARGET = "targetplayer"
@@ -20,8 +20,10 @@ class PlayerDetailActivity : AppCompatActivity(){
         binding = ActivityPlayerDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val guessedplayer = intent.getParcelableExtra<Player>(EXTRA_PLAYER)
         var guessedteam = guessedplayer?.team
+
         binding.textViewGuessedConference.text = guessedteam?.conference
         binding.textViewGuessedDivision.text = guessedteam?.division
         binding.textViewGuessedHeightFt.text = guessedplayer?.height_feet.toString()
@@ -32,6 +34,12 @@ class PlayerDetailActivity : AppCompatActivity(){
         binding.textViewGuessedTeam.text = guessedteam?.name
 
         val targetPlayer = intent.getParcelableExtra<Player>(EXTRA_TARGET)
+        var gueesedplayerheight=
+            guessedplayer?.height_feet?.toInt()?.times(12)?.plus(guessedplayer?.height_inches)
+        var targetPlayerheight = targetPlayer?.height_feet?.toInt()?.times(12)?.plus(targetPlayer?.height_inches!!)
+
+        var heightdiff = targetPlayerheight?.let { gueesedplayerheight?.minus(it) }
+
         if(guessedplayer?.first_name == targetPlayer?.first_name){
             binding.textViewGuessedFirstname.setTextColor(
                 Color.GREEN
@@ -72,10 +80,16 @@ class PlayerDetailActivity : AppCompatActivity(){
                 Color.GREEN
             )
         }
-        else if(guessedplayer?.height_inches (targetPlayer?.height_inches) <2 || 2>  ){
+        else if (heightdiff != null) {
+            if(heightdiff>-2 && heightdiff<2){
                 binding.textViewGuessedHeightIn.setTextColor(
                     Color.YELLOW
                 )
             }
+        }
     }
 }
+
+
+
+
