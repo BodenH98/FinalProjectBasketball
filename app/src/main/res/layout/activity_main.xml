@@ -9,7 +9,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/basketball_recyclerView"
         android:layout_width="413dp"
-        android:layout_height="317dp"
+        android:layout_height="601dp"
         android:layout_marginTop="132dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
